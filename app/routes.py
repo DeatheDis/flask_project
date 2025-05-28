@@ -1,5 +1,4 @@
-from flask import Flask
-app = Flask(__name__)
+from app import app
 
 
 @app.route('/')
@@ -43,6 +42,3 @@ def user(name, age):
         return 'Your age must be more than 0'
     return f'Hello, {name}. You are {age} years old.'
 
-
-if __name__ == '__main__':
-    app.run(debug=True)
