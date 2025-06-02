@@ -1,0 +1,8 @@
+/* Общее стилизование */
+body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    background-color: #fffb91;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}

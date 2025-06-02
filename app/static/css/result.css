@@ -1,0 +1,77 @@
+
+.funny-form {
+    margin: 50px auto;
+    padding: 20px;
+    width: 400px;
+    background-color: #ffe4e1;
+    border: 5px dashed #ff4500;
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.funny-title {
+    font-size: 3rem;
+    color: #ff69b4;
+    text-shadow: 3px 3px #ffa500;
+    margin-top: 20px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.funny-button {
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  height: 4rem;
+  width: 10rem;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 1px 1px 5px black;
+  background-color: white;
+}
+
+.surprise-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  background-color: #ff4500;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+  font-weight: bold;
+  user-select: none;
+}
+
+.surprise-message {
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  font-size: 1.1rem;
+  background: #d4edda;
+  padding: 10px 15px;
+  border-radius: 6px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+}
+
+.surprise-message {
+  display: none;
+  margin-top: 10px;
+  font-weight: bold;
+  color: green;
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  background: #d4edda;
+  padding: 10px 15px;
+  border-radius: 6px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+}

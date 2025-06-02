@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Result{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script src="{{ url_for('static', filename='js/result.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <h1 class="funny-title">Submission Successful</h1>
+    <div class ='funny-form'>
+        <p>Thank you, <strong>{{ name }}</strong>!</p><br>
+        <p>We have sent a confirmation to <strong>{{ email }}</strong>.</p><br>
+        <p>Your favorite color is: <span style="color: {{ color }}">{{ color }}</span>.</p>
+        <p>Your profession is: {{ profession }}.</p>
+        <p>Your hobbies: {{ hobbies | join(', ') }}.</p>
+        <p>Your level: {{ level }}.</p><br>
+        <h2>Here's a random joke for you:</h2>
+        <p>{{ joke }}</p><br>
+        <h1>Thank You, {{ name }}!</h1><br>
+        <a href="/">Go back to form</a>
+        <button class ='funny-button' id='funny-button'>Try Click Me</button>
+    </div>
+    <button id="surprise-btn" class="surprise-btn">Кнопка-сюрприз</button>
+    <div id="surprise-message" class="surprise-message">
+        Ты нашёл секретную кнопку! Поздравляем!
+    </div>
+{% endblock %}
