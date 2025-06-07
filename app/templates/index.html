@@ -2,17 +2,16 @@
 
 {% block title %}Home{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
 {% block content %}
-  <h1>Welcome to Flask</h1>
-    <p>This is the home page of our Flask application.</p>
 
-    <img src="placeholder_logo.webp" alt="Company logo" />
+<div class="container">
+    <h1>Welcome to My Flask App</h1>
+    <p>Explore the website to learn more about us!</p>
+    <img class="flask-logo" src="{{ url_for('static', filename='img/flask_icon.png') }}" alt="Flask Icon">
+</div>
 
-    <h2>Features:</h2>
-    <ul>
-      <li>Fast and light</li>
-      <li>Easy to learn</li>
-      <li>High performance</li>
-      <li>24/7 customer support</li>
-    </ul>
 {% endblock %}

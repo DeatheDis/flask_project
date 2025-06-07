@@ -1,28 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}My Flask App{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
-    {% block extra_css %}{% endblock %}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}My Flask App{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+  {% block extra_css %}{% endblock %}
 </head>
+
 <body>
-    <!-- Шапка -->
-    <header>
-    </header>
+  <!-- Шапка -->
+  <header>
+    <div class="line-top">
+      <nav>
+        <a class="link" href="/">Home</a>
+        <a class="link" href="/about">About</a>
+        <a class="link" href="/contact">Contact</a>
+      </nav>
+    </div>
 
-    <!-- Основной контент -->
-    <main>
-        {% block content %}
-        <!-- Контент будет вставляться здесь -->
-        {% endblock %}
-    </main>
+  </header>
 
-    <!-- Подвал -->
-    <footer>
-        <p>&copy; 2025 My Flask App</p>
-    </footer>
-    {% block extra_js %}{% endblock %}
+  <!-- Основной контент -->
+  <main>
+    {% block content %}
+    <!-- Контент будет вставляться здесь -->
+    {% endblock %}
+  </main>
+  {% block extra_js %} {% endblock %}
+  <!-- Подвал -->
+  <footer>
+    <div class="line-bot">
+      <nav>
+        <p class="bot-text">&copy; 2025 My Flask App</p>
+      </nav>
+    </div>
+
+  </footer>
 </body>
+
 </html>

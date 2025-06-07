@@ -1,59 +1,32 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, url_for, redirect, flash
 from app import app
-import requests
-from http import HTTPStatus
-
-url = 'https://official-joke-api.appspot.com/random_joke'
+from app.forms import ContactForm
 
 
-def get_joke(url):
-    try:
-        response = requests.get(url)
-        if response.status_code == HTTPStatus.OK:
-            data = response.json()
-            return f"{data['setup']} {data['punchline']}"
-        else:
-            return f'{response.status_code}'
-    except requests.exceptions.RequestException as e:
-        print(f'Error: {e}')
-        return 'Failed to load a joke'
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 
-@app.route("/")
-def form():
-    return render_template("form.html")
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 
-@app.route("/result")
-def result():
-    return render_template("result.html")
+@app.route('/contact', methods=['POST', 'GET'])
+def contact():
+    form = ContactForm()
+    if form.validate_on_submit():
+        name = form.name.data
+        email = form.email.data
+        message = form.message.data
+        flash('Your message has been sent successfully!', 'success')
+        return redirect(url_for('contact'))
 
-
-@app.route('/submit', methods=['POST', 'GET'])
-def submit():
     if request.method == 'POST':
-        name = request.form.get('name')
-        email = request.form.get('email')
-        color = request.form.get('color')
-        profession = request.form.get('profession')
-        hobbies = request.form.getlist('hobbies')
-        level = request.form.get('level')
-        joke = get_joke(url)
+        flash('There were errors in the form', 'error')
 
-        if not name:
-            error = "Мы не можем обработать форму без вашего имени, мистер Аноним!"
-            return render_template('form.html', error=error)
-        if not email:
-            error = 'Без почты не пройдешь, введи свой email'
-            return render_template('form.html', error=error)
-
-        return render_template('result.html',
-                               name=name, email=email, color=color,
-                               profession=profession, hobbies=hobbies,
-                               level=level, joke=joke)
-
-    else:
-        return redirect(url_for('form'))
+    return render_template('contact.html', form=form)
 
 
 

@@ -1,0 +1,92 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.container h1 {
+    font-size: 34px;
+    margin-bottom: 40px;
+}
+
+.contact-form {
+    padding: 20px;
+    min-height: 345px;
+    width: 500px;
+    background-color: #ffffff;
+    border: 5px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"] {
+    width: 90%;
+    height: 37px;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.contact-form .invalid {
+    background: rgba(255, 0, 0, 0.699);
+}
+
+.invalid-feedback {
+    display: block;
+    color: red;
+    margin-top: 3px;
+}
+
+.flash {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.flash.success {
+    background-color: #e0ecff;
+    color: #003366;
+    border: 1px solid #7aa9d6;
+}
+
+.flash.error {
+    background-color: #ffe0e0;
+    color: #800000;
+    border: 1px solid #d67a7a;
+}
+
+.message-area {
+    width: 90%;
+    font-size: 16px;
+    height: 100px;
+    resize: vertical;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    text-align: center;
+
+}
+
+
+.contact-button {
+    background-color: #333;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    font-size: 11px;
+    cursor: pointer;
+    border-radius: 4px;
+}

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Our Contacts{% endblock %}
+{% block title %}About Us{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
@@ -8,24 +8,40 @@
 
 {% block content %}
 
-  <h1>Contacts</h1>
-    <p>Feel free to reach out to us through the contact details below.</p>
-    <h2>Contact Details</h2>
-    <table border="1">
-      <tr>
-        <th>Department</th>
-        <th>Email</th>
-        <th>Phone</th>
-      </tr>
-      <tr>
-        <td>Support</td>
-        <td>support@gmail.com</td>
-        <td>+1-234-567-89-00</td>
-      </tr>
-      <tr>
-        <td>Sales</td>
-        <td>sales@gmail.com</td>
-        <td>+7-800-555-35-55</td>
-      </tr>
-    </table>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="flash {{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+
+
+<div class="container">
+  <h1>Contact Us</h1>
+
+    <form action="/contact" method="POST" class="contact-form" novalidate>
+    {{ form.hidden_tag() }}
+
+    {% for field in form if field.name not in ['csrf_token', 'submit'] %}
+        <p>
+        {{ field.label() }}
+        {% if field.errors %}
+            {{ field(class='message-area invalid') }}
+            <span class="invalid-feedback">
+            {% for e in field.errors %}
+                {{ e }}
+            {% endfor %}
+            </span>
+        {% else %}
+            {{ field(class='message-area') }}
+        {% endif %}
+        </p>
+    {% endfor %}
+
+    {{ form.submit(class_='contact-button') }}
+    </form>
+</div>
+
 {% endblock %}
