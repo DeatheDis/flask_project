@@ -18,9 +18,18 @@
 
 
 
-<div class="container">
+<div class="contact-info">
   <h1>Contact Us</h1>
+  <p><strong>Name:</strong> {{ department_info.manager.name }}</p>
+  <p><strong>Post:</strong> {{ department_info.manager.position }}</p>
+  <p><strong>Email:</strong> <a href="{{ department_info.manager.email }}">{{ department_info.manager.email }}</a></p>
 
+  <h3>Adress</h3>
+  <p>{{ department_info.address.street }}</p>
+  <p>{{ department_info.address.city }}, {{ department_info.address.zip }}</p>
+</div>
+
+<div class="container">
     <form action="/contact" method="POST" class="contact-form" novalidate>
     {{ form.hidden_tag() }}
 

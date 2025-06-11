@@ -19,3 +19,9 @@
 .flask-logo {
     width: 220px;
 }
+
+.bottom-info {
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 30px;
+}

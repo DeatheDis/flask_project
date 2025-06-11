@@ -12,9 +12,9 @@
   <h1>About Us</h1>
   <p>We are a team of passionate developers building web applications with Flask.</p>
   <ul>
-    <li>Mission: To teach programming effectively.</li>
-    <li>Vision: Empower people to build their ideas.</li>
-    <li>Values: Collaboration, innovation, and learning.</li>
+      {% for member in team_members %}
+          <li><strong>{{ member.name }}</strong> — {{ member.role }}</li>
+      {% endfor %}
   </ul>
 </div>
 
