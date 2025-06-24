@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Панель управления - Агенты{% endblock %}
+
+{% block content %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрыть"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" class="card-table" novalidate>
+        {{ form.hidden_tag() }}
+        <h1 class="text-center">Добавить Агента</h1>
+        {% for field in form if field.name not in ['submit', 'csrf_token'] %}
+            <div class="mb-3">
+            {{ field.label(class="form-label") }}
+            {% if field.errors %}
+                {{ field(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                {{ field.errors[0] }}
+                </div>
+            {% else %}
+                {{ field(class="form-control") }}
+            {% endif %}
+            </div>
+        {% endfor %}
+
+        <div class="d-grid gap-2">
+            {{ form.submit(class="btn btn-primary w-100", value=button_text) }}
+        </div>
+
+    </form>
+    <div class="text-center mt-4">
+        <a href="{{ url_for('get_agents') }}" class="btn btn-secondary">← Назад</a>
+    </div>
+{% endblock %}

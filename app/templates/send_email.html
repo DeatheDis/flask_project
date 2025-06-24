@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Панель управления - Агенты{% endblock %}
+
+{% block extra_style %}
+  <style>
+    body {
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      min-height: 100vh;
+    }
+    .urgent-card {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 30px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрыть"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+  <form method="POST" class="urgent-card" novalidate>
+  {{ form.hidden_tag() }}
+  <h2 class="text-center text-danger mb-4">🚨 Срочное сообщение</h2>
+  {% for field in form if field.name not in ['submit', 'csrf_token'] %}
+    <div class="mb-3">
+      {{ field.label(class="form-label") }}
+      {% if field.errors %}
+        {{ field(class="form-control is-invalid") }}
+        <div class="invalid-feedback">
+          {{ field.errors[0] }}
+        </div>
+      {% else %}
+        {{ field(class="form-control") }}
+      {% endif %}
+    </div>
+  {% endfor %}
+
+  {{ form.submit(class="btn btn-danger btn-lg d-block w-100") }}
+  <div class="text-center mt-3">
+    <a href="{{ url_for('get_agents') }}" class="btn btn-secondary">← Назад</a>
+  </div>
+</form>
+
+
+{% endblock %}
